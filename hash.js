@@ -11,4 +11,4 @@ function compare(password, hash) {
     return hash === bcrypt.hashSync(password, salt);
 }
 
-// console.log(compare('123456', hash));
+console.log(compare('123456', hash));

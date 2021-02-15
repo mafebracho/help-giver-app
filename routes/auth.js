@@ -1,14 +1,19 @@
 const router = require("express").Router();
-const User = require("../models/User.model");
-const bcrypt = require("bcrypt");
+// const User = require("../models/User.model");
+// const bcrypt = require("bcrypt");
 
 router.get("/signup", (req, res, next) => {
     res.render("signup");
 });
 
-router.get("/login", (req, res, next) => {
-  res.render("login");
-});
+// router.get("/login", (req, res, next) => {
+//   res.render("login");
+// });
+
+router.post("/signup", (req, res) => {
+  const  { username, password } = req.body;
+
+})
 
 // router.post("/login", (req, res) => {
 //   const { username, password } = req.body;
@@ -29,7 +34,7 @@ router.get("/login", (req, res, next) => {
 
 // router.post("/signup", (req, res) => {
 //   const { username, password } = req.body;
-//   // console.log(username, password);
+//   console.log(username, password);
 //   if (password.length < 8) {
 //     return res.render("signup", { message: "Your password must be 8 chararters long" });
 //   }

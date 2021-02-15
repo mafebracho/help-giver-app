@@ -12,8 +12,8 @@ const router = require("express").Router();
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  const user = req.session.user;
-  res.render("index", {user: user});
+  // const user = req.session.user;
+  res.render("index");
 });
 
 // router.get("/home", loginCheck(), (req, res) => {
