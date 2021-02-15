@@ -11,8 +11,14 @@ router.get("/signup", (req, res, next) => {
 // });
 
 router.post("/signup", (req, res) => {
-  const  { username, password } = req.body;
-
+  const  { email, password } = req.body;
+  console.log(email, password)
+  if (password.length < 8) {
+    return res.render("signup", { message: "Your password must be at least 8 chararters long" });
+  }
+  if (email === "") {
+    return res.render("signup", { message: "Email field cannot be empty" });
+  }
 })
 
 // router.post("/login", (req, res) => {
