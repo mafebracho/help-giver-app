@@ -1,6 +1,6 @@
 const router = require("express").Router();
-// const User = require("../models/User.model");
-// const bcrypt = require("bcrypt");
+const User = require("../models/User.model");
+const bcrypt = require("bcrypt");
 
 router.get("/signup", (req, res, next) => {
     res.render("signup");
@@ -19,6 +19,23 @@ router.post("/signup", (req, res) => {
   if (email === "") {
     return res.render("signup", { message: "Email field cannot be empty" });
   }
+  User.findOne({email: email})
+  .then(userFromDB => {
+    if (userFromDB !== null) {
+      res.render("signup", { message: "Email already registered" })
+    } else {
+      const salt = bcrypt.genSaltSync();
+      const hash = bcrypt.hashSync(password, salt)
+      User.create({ email: email, password: hash })
+      .then(userFromDB => {
+        console.log(userFromDB);
+        res.redirect("/");
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err);
+  })
 })
 
 // router.post("/login", (req, res) => {
