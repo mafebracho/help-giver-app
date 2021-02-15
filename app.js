@@ -18,25 +18,25 @@ const app = express();
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require("./config")(app);
 
-// Session config
+// START session configuration
 
-// const session = require("express-session");
-// const MongoStore = require("connect-mongo")(session)
-// const mongoose = require("./db/index");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const mongoose = require("./db/index");
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     cookie: { maxAge: 1000 * 60 * 60 * 24 },
-//     saveUninitialized: false,
-//     resave: true,
-//     store: new MongoStore({
-//       mongooseConnection: mongoose.connection
-//     })
-//   })
-// )
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+    saveUninitialized: false,
+    resave: true,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    })
+  })
+)
 
-// Session config end
+// END session configuration
 
 // default value for title local
 const projectName = "help-giver-app";
