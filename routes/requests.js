@@ -19,6 +19,38 @@ router.get('/requests/new', loginCheck(), (req, res) => {
   res.render('requests/new')
 })
 
+
+// view of seeker user with all his/her requests, rendered after requests/new
+router.get('/requests/index', (req, res) => {
+  Request.find({owner: req.session.user._id})
+  .then(requests => {
+    console.log(req.session.user._id)
+    console.log('List of requests', requests)
+    res.render('requests/index', { myRequests: requests })
+  })
+  .catch(err => {
+    console.log(err)
+  })
+})
+
+// route to post from request form to the seeker view with all his/her requests
+router.post('/requests/index', (req,res) => {
+  const { title, description, location, date } = req.body
+    Request.create({
+      title,
+      description, 
+      location, 
+      date,
+      owner: req.session.user._id})
+    .then((request) => {
+        console.log('This is the newly created request', request)
+      res.redirect('/requests/index')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+});
+
 //rendering the view to edit a posted request
 router.get('/requests/:id/edit', loginCheck(), (req, res) => {
   Request.findById(req.params.id)
@@ -31,7 +63,6 @@ router.get('/requests/:id/edit', loginCheck(), (req, res) => {
 })
 
 // post changes in edit back to the seeker view with all requests
-
 router.post('/requests/index', loginCheck(), (req, res) => {
   const { description, location, date } = req.body
   const query = {_id: req.params.id}
@@ -53,48 +84,20 @@ router.post('/requests/index', loginCheck(), (req, res) => {
   })
 })
 
-
 //rendering the view to delete a request
 router.get('/requests/:id/delete', loginCheck(), (req, res) => {
-  Request.findOneAndDelete({_id : req.params.id})
+  const query = {_id: req.params.id}
+  if (req.session.user.role !== 'admin') {
+    query.owner = req.session.user._id
+  }
+  Request.findOneAndDelete(query)
   .then((request) => {
     console.log('This is the request to delete', request)
-    res.redirect('requests/index')
+    res.redirect('/requests/index')
   })
   .catch(err => {
     console.log(err)
   })
 })
-
-// view of seeker user with all his/her requests, rendered after requests/new
-router.get('/requests/index', (req, res) => {
-  Request.find({owner: req.session.user._id})
-  .then(requests => {
-    console.log(req.session.user._id)
-    console.log('List of requests', requests)
-    res.render('requests/index', { myRequests: requests })
-  })
-  .catch(err => {
-    console.log(err)
-  })
-})
-
-// route to post from request form to the seeker view with all his/her requests
-router.post('/requests/index',loginCheck(), (req,res) => {
-  const { description, location, date } = req.body
-    Request.create({
-      description, 
-      location, 
-      date,
-      owner: req.session.user._id})
-    .then((request) => {
-        console.log('This is the newly created request', request)
-      res.redirect('/requests/index')
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-});
-
 
 module.exports = router;

@@ -18,6 +18,7 @@ const Schema = mongoose.Schema;
 // schema for help request
 const helpRequestSchema = new Schema({
   type: String,
+  title: String,
   date: {
     type: Date,
     default: Date.now
