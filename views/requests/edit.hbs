@@ -1,0 +1,17 @@
+<h2>Do you want to change something in your request?</h2>
+
+{{#with request}}
+<form action="/index" method="POST">
+  <label for="description">For what you need help:</label> 
+  <input id="title" type="text" name="description" value="{{this.description}}">
+  
+  <label for="location">In which area:</label> 
+  <input id="genre" type="text" name="location" value="{{this.location}}">
+  
+  <label for="date">Which Date:</label>
+  <input id="date" type="date" name="date" value="{{this.date}}">
+
+  <button type="submit">Edit your request</button>
+</form>
+
+{{/with}}

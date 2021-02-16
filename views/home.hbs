@@ -1,5 +1,7 @@
 <a href="/logout">Logout</a>
 
+{{!-- <p><a href="/profile">Profile</a></p> --}}
+
 {{#if User}}
   <h2>Welcome, {{ user.email }}!</h2>
   <p>This is your profile </p>
@@ -9,3 +11,15 @@
 <button>
   <a href="./home.hbs">Reload the page</a>
 </button>
+
+<div>
+<h3> Looking for help?</h3>
+
+<p><a href="/requests/new">Create your request</a></p>
+
+<h3>Willing to give help?</h3>
+
+<p><a href="/requests">See who needs help</a></p>
+
+
+</div>

@@ -12,8 +12,9 @@ const loginCheck = () => {
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  const user = req.session.user;
-  res.render("index");
+  //const user = req.session.user;
+  res.render("index", { user : req.session.user});
+  // res.render("index");
 });
 
 router.get("/home", loginCheck(), (req, res) => {
