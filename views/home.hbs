@@ -3,8 +3,8 @@
 {{#if User}}
   <h2>Welcome, {{ user.email }}!</h2>
   <p>This is your profile </p>
-{{!-- {{else}}
-  <p>Still not logged in, sorry!</p> --}}
+{{else}}
+  <p>Still not logged in, sorry!</p>
 {{/if}}
 <button>
   <a href="./home.hbs">Reload the page</a>
