@@ -32,12 +32,21 @@ router.get('/requests/:id/edit', loginCheck(), (req, res) => {
 
 // post changes in edit back to the seeker view with all requests
 
-router.post('/index', loginCheck(), (req, res) => {
+router.post('/requests/index', loginCheck(), (req, res) => {
   const { description, location, date } = req.body
-  Request.findByIdAndUpdate(req.params.id, {description, location, date})
+  const query = {_id: req.params.id}
+  if (req.session.user.role !== 'admin') {
+    query.owner = req.session.user._id
+  }
+  Request.findOneAndUpdate(query, {
+    description, 
+      location, 
+      date,
+      owner: req.session.user._id
+  })
   .then((request) => {
     console.log('The request to edit:', request)
-    res.redirect('requests/index')
+    res.redirect('/requests/index')
   })
   .catch(err => {
     console.log(err)
@@ -57,10 +66,11 @@ router.get('/requests/:id/delete', loginCheck(), (req, res) => {
   })
 })
 
-// view of seeker user with all his/her requests
-router.get('/requests/index', loginCheck(), (req, res) => {
-  Request.find()
+// view of seeker user with all his/her requests, rendered after requests/new
+router.get('/requests/index', (req, res) => {
+  Request.find({owner: req.session.user._id})
   .then(requests => {
+    console.log(req.session.user._id)
     console.log('List of requests', requests)
     res.render('requests/index', { myRequests: requests })
   })
@@ -72,10 +82,14 @@ router.get('/requests/index', loginCheck(), (req, res) => {
 // route to post from request form to the seeker view with all his/her requests
 router.post('/requests/index',loginCheck(), (req,res) => {
   const { description, location, date } = req.body
-    Request.create({description, location, date})
+    Request.create({
+      description, 
+      location, 
+      date,
+      owner: req.session.user._id})
     .then((request) => {
-        console.log(request)
-      res.render('requests/index', { myRequests: request})
+        console.log('This is the newly created request', request)
+      res.redirect('/requests/index')
     })
     .catch((err) => {
       console.log(err)
