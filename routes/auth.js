@@ -11,13 +11,16 @@ router.get("/login", (req, res, next) => {
 });
 
 router.post("/signup", (req, res) => {
-  const  { email, password } = req.body;
-  console.log(email, password)
+  const  { username, email, password } = req.body;
+  console.log(username, email, password)
   if (password.length < 8) {
     return res.render("signup", { message: "Your password must be at least 8 chararters long" });
   }
   if (email === "") {
     return res.render("signup", { message: "Email field cannot be empty" });
+  }
+  if (username === "") {
+    return res.render("signup", { message: "Username field cannot be empty" });
   }
   User.findOne({email: email})
   .then(userFromDB => {
@@ -26,7 +29,7 @@ router.post("/signup", (req, res) => {
     } else {
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt)
-      User.create({ email: email, password: hash })
+      User.create({ username: username, email: email, password: hash })
       .then(userFromDB => {
         console.log(userFromDB);
         res.redirect("/");
@@ -40,15 +43,16 @@ router.post("/signup", (req, res) => {
 
 router.post("/login", (req, res) => {
   // console.log(req.body.email);
-  const { email, password } = req.body;
-  User.findOne({ email: email })
+  const { username, password } = req.body;
+  User.findOne({ username: username })
   .then(userFromDB => {
     if (userFromDB === null) {
       return res.render("login", { message: "Invalid credentials" });
     }
     if (bcrypt.compareSync(password, userFromDB.password)) {
       req.session.user = userFromDB;
-      res.redirect("/home");
+      console.log(userFromDB);
+      res.render("home.hbs", { userFromDB });
     } else {
       res.render("login", { message: "Invalid credentials" });
     }
