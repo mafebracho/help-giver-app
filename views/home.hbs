@@ -1,11 +1,14 @@
-<a href="/logout">Logout</a>
-
-{{#if User}}
-  <h2>Welcome, {{ user.email }}!</h2>
-  <p>This is your profile </p>
+{{#if userFromDB.username}}
+<h2>Welcome, {{userFromDB.username}}!</h2>
+<p>This is your profile </p>
 {{else}}
-  <p>Still not logged in, sorry!</p>
+<p>Still not logged in, sorry!</p>
 {{/if}}
+
 <button>
-  <a href="./home.hbs">Reload the page</a>
+<a href="/logout">Logout</a>
+</button>
+
+<button>
+<a href="/home">Reload the page</a>
 </button>
