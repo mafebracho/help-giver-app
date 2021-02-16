@@ -21,4 +21,5 @@ router.get("/home", loginCheck(), (req, res) => {
   res.render("home");
 });
 
+
 module.exports = router;

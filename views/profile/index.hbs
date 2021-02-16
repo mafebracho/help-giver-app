@@ -1,0 +1,12 @@
+
+{{#with user}}
+<h3>Welcome {{this.username}} to your profile </h3>
+
+
+ <img style="width: 200px;" src="{{this.imagePath}}"/>
+<p>{{this.firstName}} {{this.lastName}}</p>
+<p>Email: {{this.email}}</p>
+<p> {{this.location}}</p>
+
+<button><a href="/profile/{{ this._id }}/edit">Edit Profile</a></button>
+{{/with}}

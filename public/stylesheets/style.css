@@ -9,3 +9,26 @@ h1 {
   color: 15px; }
 
 /*# sourceMappingURL=style.css.map */
+
+nav {
+  background-color: #2081c3;
+  padding: 10px;
+  margin: auto;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  
+}
+
+nav li {
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: #f7f9f9;
+  font-size: 20px;
+}
