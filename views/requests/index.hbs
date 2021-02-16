@@ -1,0 +1,17 @@
+<h1>My Requests</h1>
+{{#each myRequests}}
+
+    <p>Description: {{this.description}}</p>
+    <p>Location: {{this.location}}</p>
+    <p>Date: {{this.date}}</p>
+
+    <p><a href="/requests/{{ this._id }}/edit">Edit</a>
+    <a href="/requests/{{ this._id }}/delete">Delete</a></p>
+
+
+
+{{/each}}
+<br>
+<br>
+<br>
+<a href="/requests/new">Add new request</a>

@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+
 // creating geolocation Schema
+
 // const integerValidator = require('mongoose-integer');
+
 // const GeoSchema = new Schema({
 //     type: {
 //         type: String,
@@ -11,10 +14,11 @@ const Schema = mongoose.Schema;
 //         type: [Number]
 //     }
 // });
-// schema for help offer
+
+// schema for help request
 const helpRequestSchema = new Schema({
   type: String,
-  requestedDates: {
+  date: {
     type: Date,
     default: Date.now
     },
@@ -35,5 +39,6 @@ const helpRequestSchema = new Schema({
   //to add the location into the map
   // geometry: GeoSchema,
 });
+
 const Request = mongoose.model("Request", helpRequestSchema);
 module.exports = Request;

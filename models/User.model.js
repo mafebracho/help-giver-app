@@ -16,7 +16,7 @@ const userSchema = new Schema({
   location: String, 
   role: {
     type: String,
-     enum: ['user', 'giver', 'seeker'],
+     enum: ['user', 'giver', 'seeker', 'admin'],
      default: 'user'
    }
   //  reviews: [

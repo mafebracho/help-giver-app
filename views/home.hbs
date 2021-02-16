@@ -1,4 +1,5 @@
-{{#if userFromDB.username}}
+
+{{#if userFromDB.username }}
 <h2>Welcome, {{userFromDB.username}}!</h2>
 <p>This is your profile </p>
 {{else}}
@@ -12,3 +13,15 @@
 <button>
 <a href="/home">Reload the page</a>
 </button>
+
+<div>
+<h3> Looking for help?</h3>
+
+<p><a href="/requests/new">Create your request</a></p>
+
+<h3>Willing to give help?</h3>
+
+<p><a href="/requests">See who needs help</a></p>
+
+
+</div>
