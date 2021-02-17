@@ -4,6 +4,10 @@
 {{#with request}}
 
   <p>{{this.title}}</p>
+  {{#with owner}}
+  <p>{{this.username}}</p>
+  <img style="width: 200px;" src="{{this.imagePath}}"/>
+  {{/with}}
   <p>{{this.description}}</p>
   <p>{{this.location}}</p>
   <p>{{this.date}}</p>

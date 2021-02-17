@@ -37,7 +37,7 @@ router.get('/profile/:id/edit', loginCheck(), (req, res) => {
   })
 })
 
-router.post('/profile/:id/edit', uploader.single('image'), (req, res) => {
+router.post('/profile/:id/edit', loginCheck(), uploader.single('image'), (req, res) => {
   console.log(req.file);
   console.log(req.params.id)
   const { email, firstName, lastName, location } = req.body
