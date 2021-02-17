@@ -1,0 +1,27 @@
+<h3>Edit Profile</h3>
+
+{{#with user}}
+<form action="/profile/{{ this._id }}/edit" method="POST" enctype="multipart/form-data">
+
+  <label for="email">Email:</label> 
+  <input id="email" type="text" name="email" value="{{this.email}}">
+
+  <label for="firstName">Name:</label> 
+  <input id="firstName" type="text" name="firstName" value="{{this.firstName}}">
+
+  <label for="lastName">Last Name:</label> 
+  <input id="lastName" type="text" name="lastName" value="{{this.lastName}}">
+  
+  <label for="location">Location:</label> 
+  <input id="location" type="text" name="location" value="{{this.location}}">
+
+  {{!-- <label for="language">Spoken Languages:</label> 
+  <input id="language" type="text" name="language" value="{{this.language}}"> --}}
+  
+  <label for="image">Profile Picture:</label>
+  <input id="image" type="file" name="image">
+
+  <button type="submit">Save</button>
+</form>
+
+{{/with}}

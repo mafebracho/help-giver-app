@@ -11,6 +11,18 @@
 
    <body>
 
+        <div>
+        <nav>
+            <ul>
+              <li><a href="/home"> Home </a></li>
+              {{#if userFromDB.username }}
+              <li><a href="/profile/index"> Profile </a></li>
+              <li><a href="/logout"> Log Out</a></li>
+              {{/if}}
+            </ul>
+          </nav>
+        </div>
+
       {{{body}}}
 
       <script src="/js/script.js"></script>

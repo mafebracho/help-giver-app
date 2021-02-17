@@ -54,6 +54,9 @@ app.use("/", auth);
 const requests = require('./routes/requests')
 app.use('/', requests)
 
+const profile = require('./routes/profile')
+app.use('/', profile)
+
 const offers = require("./routes/offers");
 app.use("/", offers);
 

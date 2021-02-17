@@ -18,6 +18,7 @@ router.get('/requests/new', loginCheck(), (req, res) => {
   res.render('requests/new')
 })
 
+
 // view of seeker user with all his/her requests, rendered after requests/new
 router.get('/requests/index', (req, res) => {
   Request.find({owner: req.session.user._id})
@@ -33,8 +34,9 @@ router.get('/requests/index', (req, res) => {
 
 // route to post from request form to the seeker view with all his/her requests
 router.post('/requests/index', (req,res) => {
-  const { description, location, date } = req.body
+  const { title, description, location, date } = req.body
     Request.create({
+      title,
       description, 
       location, 
       date,
@@ -60,7 +62,6 @@ router.get('/requests/:id/edit', loginCheck(), (req, res) => {
 })
 
 // post changes in edit back to the seeker view with all requests
-
 router.post('/requests/index', loginCheck(), (req, res) => {
   const { description, location, date } = req.body
   const query = {_id: req.params.id}
@@ -82,22 +83,19 @@ router.post('/requests/index', loginCheck(), (req, res) => {
   })
 })
 
-
 //rendering the view to delete a request
 router.get('/requests/:id/delete', loginCheck(), (req, res) => {
-  Request.findOneAndDelete({_id : req.params.id})
+  const query = {_id: req.params.id}
+  if (req.session.user.role !== 'admin') {
+    query.owner = req.session.user._id
+  }
+  Request.findOneAndDelete(query)
   .then((request) => {
     console.log('This is the request to delete', request)
-    res.redirect('requests/index')
+    res.redirect('/requests/index')
   })
   .catch(err => {
     console.log(err)
   })
 })
-
-
-
-
-
-
 module.exports = router;
