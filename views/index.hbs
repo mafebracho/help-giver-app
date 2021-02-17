@@ -1,4 +1,8 @@
-<h1>Hey there!</h1>
-
-<a href="/signup">Sign Up</a>
-<a href="/login">Log In</a>
+{{#if userFromDB.username }}
+  <h1>Hey there {{userFromDB.username}}!</h1>
+  <a href="/login">Log In</a>
+{{else}}
+  <h1>Hey there!</h1>
+  <a href="/signup">Sign Up</a>
+  <a href="/login">Log In</a>
+{{/if}}

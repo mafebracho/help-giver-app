@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require('../models/User.model');
 const Request = require('../models/Request');
 
-
 const loginCheck = () => {
   return (req, res, next) => {
     if (req.session.user) {
@@ -18,6 +17,36 @@ const loginCheck = () => {
 router.get('/requests/new', loginCheck(), (req, res) => {
   res.render('requests/new')
 })
+
+// view of seeker user with all his/her requests, rendered after requests/new
+router.get('/requests/index', (req, res) => {
+  Request.find({owner: req.session.user._id})
+  .then(requests => {
+    console.log(req.session.user._id)
+    console.log('List of requests', requests)
+    res.render('requests/index', { myRequests: requests })
+  })
+  .catch(err => {
+    console.log(err)
+  })
+})
+
+// route to post from request form to the seeker view with all his/her requests
+router.post('/requests/index', (req,res) => {
+  const { description, location, date } = req.body
+    Request.create({
+      description, 
+      location, 
+      date,
+      owner: req.session.user._id})
+    .then((request) => {
+        console.log('This is the newly created request', request)
+      res.redirect('/requests/index')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+});
 
 //rendering the view to edit a posted request
 router.get('/requests/:id/edit', loginCheck(), (req, res) => {
@@ -66,35 +95,9 @@ router.get('/requests/:id/delete', loginCheck(), (req, res) => {
   })
 })
 
-// view of seeker user with all his/her requests, rendered after requests/new
-router.get('/requests/index', (req, res) => {
-  Request.find({owner: req.session.user._id})
-  .then(requests => {
-    console.log(req.session.user._id)
-    console.log('List of requests', requests)
-    res.render('requests/index', { myRequests: requests })
-  })
-  .catch(err => {
-    console.log(err)
-  })
-})
 
-// route to post from request form to the seeker view with all his/her requests
-router.post('/requests/index',loginCheck(), (req,res) => {
-  const { description, location, date } = req.body
-    Request.create({
-      description, 
-      location, 
-      date,
-      owner: req.session.user._id})
-    .then((request) => {
-        console.log('This is the newly created request', request)
-      res.redirect('/requests/index')
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-});
+
+
 
 
 module.exports = router;
