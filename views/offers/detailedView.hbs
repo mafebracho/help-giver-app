@@ -1,0 +1,18 @@
+<button><a href="/offers/index">Back</a></button>
+<button><a href="/logout">Logout</a></button>
+
+{{#with request}}
+
+  <p>{{this.title}}</p>
+  <p>{{this.description}}</p>
+  <p>{{this.location}}</p>
+  <p>{{this.date}}</p>
+
+{{/with}}
+
+{{!-- shows a button to contact the help seeker and by clicking it, the button will say "pending" or something like "undo" ? --}}
+
+{{!-- <form>
+<input type="button" value="Contact" onClick="location.href='mailto:you@yourdomain.com'">
+</form> --}}
+{{!-- window.open('mailto:test@example.com?subject=subject&body=body'); --}}

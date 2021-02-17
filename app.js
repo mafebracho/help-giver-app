@@ -57,6 +57,9 @@ app.use('/', requests)
 const profile = require('./routes/profile')
 app.use('/', profile)
 
+const offers = require("./routes/offers");
+app.use("/", offers);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

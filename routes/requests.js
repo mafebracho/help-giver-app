@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require('../models/User.model');
 const Request = require('../models/Request');
 
-
 const loginCheck = () => {
   return (req, res, next) => {
     if (req.session.user) {
@@ -99,5 +98,4 @@ router.get('/requests/:id/delete', loginCheck(), (req, res) => {
     console.log(err)
   })
 })
-
 module.exports = router;
