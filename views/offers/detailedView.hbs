@@ -8,11 +8,13 @@
   <p>{{this.location}}</p>
   <p>{{this.date}}</p>
 
+<form>
+<input type="button" value="Contact" onClick="location.href='mailto:{{userFromDB.mail}}'">
+</form>
+
 {{/with}}
 
 {{!-- shows a button to contact the help seeker and by clicking it, the button will say "pending" or something like "undo" ? --}}
 
-{{!-- <form>
-<input type="button" value="Contact" onClick="location.href='mailto:you@yourdomain.com'">
-</form> --}}
+
 {{!-- window.open('mailto:test@example.com?subject=subject&body=body'); --}}
