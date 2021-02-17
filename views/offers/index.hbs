@@ -1,22 +1,18 @@
-{{!-- maybe we could show options like filter / sort / view all --}}
-
 <a href="#">Filter</a>
 <a href="#">Sort</a>
 <a href="#">View All</a>
 <button><a href="/home">Back</a></button>
 <button><a href="/logout">Logout</a></button>
 
-{{!-- shows list of all the requests  --}}
-
-{{#each myRequests}}
+{{#each requests}}
 
   <p>{{this.title}}</p>
-  <p>{{this.description}}</p>
+  {{!-- <p>{{this.description}}</p> --}}
   <p>{{this.location}}</p>
   <p>{{this.date}}</p>
 
-  <button><a href="offers/detailedView">See Details</a></button>
+  <button><a href="detailedView/{{this._id}}">See Details</a></button>
 
 {{/each}}
 
-{{!-- here we can also implement the map  --}}
+{{!-- here we can implement the map  --}}

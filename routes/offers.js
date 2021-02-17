@@ -19,7 +19,7 @@ router.get("/offers/index", loginCheck(), (req, res) => {
   .then(requests => {
     console.log(req.session.user._id)
     console.log("List of requests", requests)
-    res.render("offers/index", { myRequests: requests })
+    res.render("offers/index", { requests })
   })
   .catch(err => {
     console.log(err)
@@ -28,15 +28,15 @@ router.get("/offers/index", loginCheck(), (req, res) => {
 
 // renders singe card view
 
-router.get("/offers/:id/detailedView", loginCheck(), (req, res) => {
+router.get("/offers/detailedView/:id", loginCheck(), (req, res) => {
+  console.log(req.params);
   Request.findById(req.params.id)
   .then(request => {
-    res.render("offers/detailedView", { request })
+    res.render('offers/detailedView.hbs', { request })
   })
   .catch (err => {
     console.log(err)
   })
 })
-
 
 module.exports = router;
