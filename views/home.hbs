@@ -1,14 +1,42 @@
-{{#if userFromDB.username }}
+
+   <div class="wrapper">
+       <header>
+         <nav>
+           <div class="menu-icon">
+             <i class="fa fa-bars fa-2x"></i>
+            </div>
+             <div class="menu">
+               <ul>
+                <li><a href="/home"> Home </a></li>
+
+                {{#if user}}
+                <li><a href="/profile/index"> Profile </a></li>
+                <li><a href="/logout"> Log Out</a></li>
+                {{else}}
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                {{/if}}
+                
+                </ul>
+              </div>
+              <div class="logo">
+              <h1>LAND ME A HAND</h1>
+              </div>
+          </nav>
+        </header>
+      </div>
+
+{{!-- {{#if userFromDB.username }}
   <h2>Welcome, {{userFromDB.username}}!</h2>
 {{!-- {{else}}
   <p>Still not logged in, sorry!</p> --}}
-{{/if}}
+{{!-- {{/if}}  --}}
 
 {{!-- <button><a href="/logout">Logout</a></button>
 
 <button><a href="/home">Reload the page</a></button> --}}
 
-<div>
+{{!-- <div>
 <h3> Looking for help?</h3>
 
 <p><a href="/requests/new">Create your request</a></p>
@@ -18,4 +46,38 @@
 <p><a href="/offers/index">See who needs help</a></p>
 
 
-</div>
+</div> --}}
+
+   <div class="cardBody">
+    <div class="container">
+
+
+      <div class="card">
+        <div class="face face1">
+          <div class="content">
+            <h3>Looking for help?</h3>
+          </div>
+        </div>
+        <div class="face face2">
+          <div class="content">
+            <p style="text-align: center;"><a href="/requests/new">Create your request</a></p>
+          </div>
+        </div>
+      </div>
+
+            <div class="card">
+        <div class="face face1">
+          <div class="content">
+            <h3>Willing to help?</h3>
+          </div>
+        </div>
+        <div class="face face2">
+          <div class="content">
+            <p style="text-align: center;"><a href="/offers/index">See who needs help</a></p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>

@@ -14,6 +14,7 @@ h1 {
   text-align: center;
 }
 
+
 body {
   font-family: "Helvetica Neue",sans-serif;
   font-weight: lighter;
@@ -253,11 +254,19 @@ nav ul li a {
 
 /*# sourceMappingURL=style.css.map */
 
+/* PROFILE SECTIONS*/
+
+
 .profile {
   text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: 20px;
-
+  max-width: 200px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  
 }
 
 .profile__image {
@@ -266,5 +275,210 @@ nav ul li a {
   object-fit: cover;
   border-radius: 50%;
   margin: 0 auto 20px auto;
+  display: block;
+}
+
+.profile__name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.profile__email {
+  margin-top: 5px;
+   margin-bottom: 10px;
+   font-size: 0.9em;
+   color: #333;
+   font-family:Arial, Helvetica, sans-serif;
+}
+
+.profile__location {
+  color: #333;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+}
+
+.profile__date {
+  color: #333;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  margin-top: 5px;
+   margin-bottom: 10px;
+
+}
+
+.profile__button {
+  color: #333;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 0.9em;
+  padding: 5px 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color:rgba(255,90,95, 0.6);
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform .2s;
+}
+
+.profile__button:hover {
+    transform: scale(1.1);
+}
+
+.btn-profile {
+  margin: auto;
+  width: 7%;
+  padding: 10px;
+}
+
+.btn-profile button {
+  padding: 10px 10px;
+  border: none;
+  background-color:rgba(255,90,95, 0.6);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform .2s;
+}
+
+.btn-profile a {
+  font-size: 1em;
+  text-decoration: none;
+  color: #333;
+}
+
+.btn-profile:hover {
+  transform: scale(1.1);
+}
+
+.profile-form {
+  border-radius: 5px;
+  background-color:  rgba(242,242,242, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  padding: 20px;
+  max-width: 300px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.profile-form input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.profile-form input[type=file] {
+  width: 100%;
+  padding: 14px 20px;
+  color: #333;  
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+}
+
+.profile-form button[type=submit] {
+  width: 100%;
+  background-color:rgba(255,90,95, 0.6);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover {
+  background-color:rgba(255,90,95, 0.6);
+}
+
+.signup-form {
+  border-radius: 5px;
+  background-color:  rgba(242,242,242, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  padding: 20px;
+  max-width: 300px;
+  margin: 20px auto;
+}
+
+.signup-form input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-form input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-form input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-form input[type=date] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #333;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-form button[type=submit] {
+  width: 100%;
+  background-color:rgba(255,90,95, 0.6);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type=submit]:hover {
+  background-color:rgba(255,90,95, 0.6);
+}
+
+/* buttons to go back to previous page */
+
+.btn-nav {
+  background-color:rgb(255,90,95);
+  border: 1px  rgb(255,90,95);
+  margin: 20px;
+  padding: 10px 20px;
+
+
+}
+
+.btn-nav a {
+  text-decoration: none;
+  padding: 10px 20px;
+  color: white;
   
 }
+
+
+
+

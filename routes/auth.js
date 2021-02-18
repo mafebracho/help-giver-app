@@ -23,15 +23,15 @@ router.post("/signup", (req, res) => {
     return res.render("signup", { message: "Username field cannot be empty" });
   }
   User.findOne({email: email})
-  .then(userFromDB => {
-    if (userFromDB !== null) {
+  .then(user => {
+    if (user !== null) {
       res.render("signup", { message: "Email already registered" })
     } else {
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt)
       User.create({ username: username, email: email, password: hash })
-      .then(userFromDB => {
-        console.log(userFromDB);
+      .then(user => {
+        console.log(user);
         res.redirect("/home");
       })
     }
@@ -45,14 +45,14 @@ router.post('/home', /*"/login",*/ (req, res) => {
   // console.log(req.body.email);
   const { username, password } = req.body;
   User.findOne({ username: username })
-  .then(userFromDB => {
-    if (userFromDB === null) {
+  .then(user => {
+    if (user === null) {
       return res.render("login", { message: "Invalid credentials" });
     }
-    if (bcrypt.compareSync(password, userFromDB.password)) {
-      req.session.user = userFromDB;
-      console.log(userFromDB);
-         res.render("home.hbs", { userFromDB });
+    if (bcrypt.compareSync(password, user.password)) {
+      req.session.user = user;
+      console.log(user);
+         res.render("home.hbs", { user });
     } else {
       res.render("login", { message: "Invalid credentials" });
     }

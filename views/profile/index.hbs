@@ -1,15 +1,49 @@
+   <div class="wrapper">
+       <header>
+         <nav>
+           <div class="menu-icon">
+             <i class="fa fa-bars fa-2x"></i>
+            </div>
+             <div class="menu">
+               <ul>
+                <li><a href="/home"> Home </a></li>
+
+                {{#if user}}
+                <li><a href="/profile/index"> Profile </a></li>
+                <li><a href="/logout"> Log Out</a></li>
+                {{else}}
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                {{/if}}
+                
+                </ul>
+              </div>
+              <div class="logo">
+              <h1>LAND ME A HAND</h1>
+              </div>
+          </nav>
+        </header>
+      </div>
+
+
 
 {{#with user}}
-<h3>Welcome to your profile </h3>
 
+<div class="containerHoriz">
 <div class="profile">
 
- <img style="width: 200px;" src="{{this.imagePath}}" class="profile__image"/>
+ <img src="{{this.imagePath}}" class="profile__image"/>
+
+ {{!-- <img src="//public/images/avatar.png" class="profile__image"/>  --}}
+
 <div class="profile__name">{{this.firstName}} {{this.lastName}}</div>
-<div class="profile__email">Email: {{this.email}}</div>
+<div class="profile__email">email: {{this.email}}</div>
 <div class="profile__location"> {{this.location}}</div>
 
 </div>
 
+<div class="btn-profile">
 <button><a href="/profile/{{ this._id }}/edit">Edit Profile</a></button>
+</div>
+</div>
 {{/with}}
