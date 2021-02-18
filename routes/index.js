@@ -19,11 +19,11 @@ const loginCheck = () => {
 // });
 
 router.get("/", (req, res, next) => {
-  const user = {
-    layout: false
-  }
-  res.render("index", user );
-  // res.render("index");
+  // const user = {
+  //   layout: false
+  // }
+  // res.render("index", user );
+  res.render("index");
 });
 
 router.get("/home", loginCheck(), (req, res) => {
