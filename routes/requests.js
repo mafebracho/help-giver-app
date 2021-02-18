@@ -20,7 +20,7 @@ router.get('/requests/new', loginCheck(), (req, res) => {
 
 
 // view of seeker user with all his/her requests, rendered after requests/new
-router.get('/requests/index', (req, res) => {
+router.get('/requests/index', loginCheck(), (req, res) => {
   Request.find({owner: req.session.user._id})
   .then(requests => {
     console.log(req.session.user._id)

@@ -19,10 +19,11 @@ const Schema = mongoose.Schema;
 const helpRequestSchema = new Schema({
   type: String,
   title: String,
-  date: {
-    type: Date,
-    default: Date.now
-    },
+  date: String,
+  // date: {
+  //   type: Date,
+  //   default: Date.now
+  //   },
   description: String,
   owner: {
       type: Schema.Types.ObjectId,

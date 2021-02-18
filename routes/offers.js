@@ -15,9 +15,8 @@ const loginCheck = () => {
 // renders the requests cards view
 
 router.get("/offers/index", loginCheck(), (req, res) => {
-  Request.find({owner: req.session.user._id})
+  Request.find().populate('owner')
   .then(requests => {
-    console.log(req.session.user._id)
     console.log("List of requests", requests)
     res.render("offers/index", { requests })
   })
@@ -30,7 +29,7 @@ router.get("/offers/index", loginCheck(), (req, res) => {
 
 router.get("/offers/detailedView/:id", loginCheck(), (req, res) => {
   console.log(req.params);
-  Request.findById(req.params.id)
+  Request.findById(req.params.id).populate('owner')
   .then(request => {
     res.render('offers/detailedView.hbs', { request })
   })
@@ -38,5 +37,8 @@ router.get("/offers/detailedView/:id", loginCheck(), (req, res) => {
     console.log(err)
   })
 })
+
+
+
 
 module.exports = router;
