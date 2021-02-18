@@ -97,6 +97,35 @@ nav ul li a {
   display: none;
 }
 
+#features {
+  display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
+
+.feature-box {
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.icon {
+  color: #ff5a5f;
+  margin-bottom: 1rem;
+}
+
+.icon:hover {
+  color: black;
+}
+
+#darkBackground {
+  color: #fff;
+  background-color: black;
+}
+
 @media(max-width: 786px) {
 
   .logo {
