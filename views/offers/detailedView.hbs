@@ -1,19 +1,68 @@
-<button><a href="/offers/index">Back</a></button>
+
+<div class="wrapper">
+       <header>
+         <nav>
+           <div class="menu-icon">
+             <i class="fa fa-bars fa-2x"></i>
+            </div>
+             <div class="menu">
+               <ul>
+                <li><a href="/home"> Home </a></li>
+                <li><a href="/profile/index"> Profile </a></li>
+                <li><a href="/logout"> Log Out</a></li>          
+                </ul>
+              </div>
+              <div class="logo">
+              <h1>LAND ME A HAND</h1>
+              </div>
+          </nav>
+        </header>
+      </div>
+
+<div class="containerHoriz">
+<button class="btn-nav"><a href="/offers/index">Back to all requests</a></button>
+
 
 
 {{#with request}}
-
-  <p>{{this.title}}</p>
-  {{#with owner}}
-  <p>{{this.username}}</p>
-  <img style="width: 200px;" src="{{this.imagePath}}"/>
-  {{/with}}
-  <p>{{this.description}}</p>
-  <p>{{this.location}}</p>
-  <p>{{this.date}}</p>
-
+<div class="profile">
+{{#with owner}}
+ <img src="{{this.imagePath}}" class="profile__image"/>
+<div class="profile__name"> {{this.username}}</div>
+{{/with}}
+<div class="profile__email">{{this.description}}</div>
+<div class="profile__location"> {{this.location}}</div>
+<div class="profile__date"> {{this.date}}</div>
 <form>
-<input type="button" value="Contact" onClick="location.href='mailto:{{userFromDB.mail}}'">
+<input class="profile__button" type="button" value="Contact" onClick="location.href='mailto:{{userFromDB.mail}}'">
 </form>
+</div>
+
+
+
+ {{/with}}
+</div>
+  {{!-- <div class="cardBody">
+    <div class="container">
+
+{{#with request}}
+      <div class="card">
+        <div class="face face1">
+          <div class="content">
+            <h3>{{this.title}}</h3>
+          </div>
+        </div>
+        <div class="face face2">
+          <div class="content"> 
+            {{!-- <p>{{this.description}}</p> --}}
+            {{!-- <p>{{this.location}}</p>
+            <p>{{this.date}}</p>
+
+            <a href="detailedView/{{this._id}}">See Details</a>
+          </div>
+        </div>
+      </div>
 
 {{/with}}
+    </div>
+  </div> --}} 

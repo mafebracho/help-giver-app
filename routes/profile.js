@@ -17,9 +17,9 @@ const loginCheck = () => {
 
 router.get ('/profile/index', loginCheck(), (req, res) => {
    User.findOne()
- .then(userFromDB => {
-   console.log('This is the user', userFromDB)
-    res.render('profile/index', { user : userFromDB})
+ .then(user => {
+   console.log('This is the user', user)
+    res.render('profile/index', { user })
   })
   .catch(err => {
     console.log(err)

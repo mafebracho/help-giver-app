@@ -1,7 +1,38 @@
+   <div class="wrapper">
+       <header>
+         <nav>
+           <div class="menu-icon">
+             <i class="fa fa-bars fa-2x"></i>
+            </div>
+             <div class="menu">
+               <ul>
+                <li><a href="/"> Home </a></li>
+
+                {{#if user}}
+                <li><a href="/profile/index"> Profile </a></li>
+                <li><a href="/logout"> Log Out</a></li>
+                {{else}}
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                {{/if}}
+                
+                </ul>
+              </div>
+              <div class="logo">
+              <h1>LAND ME A HAND</h1>
+              </div>
+          </nav>
+        </header>
+      </div>
+
+
+
+
 <div class="containerHoriz">
   
 <h2>Sign Up</h2>
 
+<div class="signup-form">
 <form action="/signup" method="POST">
 
   <label for="username">Username</label>
@@ -11,13 +42,15 @@
   <input type="email" name="email" placeholder="Your email" required>
 
   <label for="password">Password</label>
-  <input type="password" name="password" required>
+  <input type="password" name="password" placeholder="************" required>
 
-  <button type="submit">Sign Up</button>
+  <button type="submit">Create my account</button>
 
 </form>
 
+</div>
+
 {{#if message}}
-  <p style="color: red">{{message}}</p>
+  <p style="color: #ff5a5f"><strong>{{message}}</strong></p>
 {{/if}}
 </div>

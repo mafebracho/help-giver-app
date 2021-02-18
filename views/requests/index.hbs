@@ -1,18 +1,70 @@
 
+    <div class="wrapper">
+       <header>
+         <nav>
+           <div class="menu-icon">
+             <i class="fa fa-bars fa-2x"></i>
+            </div>
+             <div class="menu">
+               <ul>
+                <li><a href="/home"> Home </a></li>
 
-<h1>My Requests</h1>
-{{#each myRequests}}
+                {{#if request}}
+                <li><a href="/profile/index"> Profile </a></li>
+                <li><a href="/logout"> Log Out</a></li>
+                {{else}}
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                {{/if}}
+                
+                </ul>
+              </div>
+              <div class="logo">
+              <h1>LAND ME A HAND</h1>
+              </div>
+          </nav>
+        </header>
+      </div>
 
-    <p>Name: {{this.title}}</p>
-    <p>Description: {{this.description}}</p>
-    <p>Location: {{this.location}}</p>
-    <p>Date: {{this.date}}</p>
+    
 
-    <p><a href="/requests/{{ this._id }}/edit">Edit</a>
-    <a href="/requests/{{ this._id }}/delete">Delete</a></p>
+<h2 style="text-align: center;">My Requests</h2>
+
+<div style="text-align: center;">
+<button class="btn-nav"><a href="/requests/new">Add new request</a></button>
+</div>
+
+   <div class="cardBody">
+        
+    <div class="container">
+
+       
+
+{{#each request}}
+      <div class="card">
+        <div class="face face1">
+          <div class="content">
+            <h3>{{this.title}}</h3>
+          </div>
+        </div>
+        <div class="face face2">
+          <div class="content"> 
+            <p>{{this.description}}</p> 
+            <p>Date: {{this.date}}</p>
+
+            <a href="/requests/{{ this._id }}/edit">Edit</a>
+           <a href="/requests/{{ this._id }}/delete">Delete</a>
+          </div>
+        </div>
+      </div>
 
 {{/each}}
+    </div>
+  </div> 
+
+
 <br>
 <br>
 <br>
-<a href="/requests/new">Add new request</a>
+
+

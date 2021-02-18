@@ -1,6 +1,41 @@
-<h2>Do you want to change something in your request?</h2>
+    <div class="wrapper">
+       <header>
+         <nav>
+           <div class="menu-icon">
+             <i class="fa fa-bars fa-2x"></i>
+            </div>
+             <div class="menu">
+               <ul>
+                <li><a href="/home"> Home </a></li>
+
+                {{#if request}}
+                <li><a href="/profile/index"> Profile </a></li>
+                <li><a href="/logout"> Log Out</a></li>
+                {{else}}
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                {{/if}}
+                
+                </ul>
+              </div>
+              <div class="logo">
+              <h1>LAND ME A HAND</h1>
+              </div>
+          </nav>
+        </header>
+      </div>
+
+     
+              
+      <div class="containerHoriz">
+
+       
+
+
+<h2>Something has changed?</h2>
 
 {{#with request}}
+<div class="signup-form">
 <form action="/requests/index" method="POST">
 
 <label for="title">Name:</label> 
@@ -17,5 +52,10 @@
 
   <button type="submit">Edit your request</button>
 </form>
+</div>
 
 {{/with}}
+
+<button class="btn-nav"><a href="/requests/index">Back to your requests</a></button> 
+
+</div>

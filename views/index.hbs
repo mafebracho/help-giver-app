@@ -1,11 +1,33 @@
 
+    <div class="wrapper">
+       <header>
+         <nav>
+           <div class="menu-icon">
+             <i class="fa fa-bars fa-2x"></i>
+            </div>
+             <div class="menu">
+               <ul>
+                {{#if user}}
+                <li><a href="/profile/index"> Profile </a></li>
+                <li><a href="/logout"> Log Out</a></li>
+                {{else}}
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                {{/if}}
+                
+                </ul>
+              </div>
+              <div class="logo">
+              <h1>LAND ME A HAND</h1>
+              </div>
+          </nav>
+        </header>
+      </div>
+
 <div class="content">
-{{!-- {{#if userFromDB.username }}
-  <h1>Hey there {{userFromDB.username}}!</h1>
-  <a href="/login">Log In</a>
-{{else}}
-  <h1>Hey there!</h1>
-  <a href="/signup">Sign Up</a>
-  <a href="/login">Log In</a>
-{{/if}} --}}
+
+  <article>Nowadays, being part of a community that makes a real difference when one of its members need help, can be hard.<article>
+  <article><strong>Land me a hand</strong> is the platform where everyone can make the difference.<br>
+  Ask for help when you need and...return the favour by lending your hand. </article>
+  
 </div>
