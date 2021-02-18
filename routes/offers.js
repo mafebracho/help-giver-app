@@ -38,4 +38,7 @@ router.get("/offers/detailedView/:id", loginCheck(), (req, res) => {
   })
 })
 
+
+
+
 module.exports = router;

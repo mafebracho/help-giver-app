@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const User = require("../models/User.model");
 
 const loginCheck = () => {
   return (req, res, next) => {
@@ -26,7 +27,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/home", loginCheck(), (req, res) => {
-  res.render("home");
+   res.render("home");
 });
 
 
