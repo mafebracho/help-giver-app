@@ -15,7 +15,7 @@ const loginCheck = () => {
 // renders the requests cards view
 
 router.get("/offers/index", loginCheck(), (req, res) => {
-  Request.find()
+  Request.find().populate('owner')
   .then(requests => {
     console.log("List of requests", requests)
     res.render("offers/index", { requests })
