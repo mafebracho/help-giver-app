@@ -12,8 +12,12 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  background: rgba(242,242,242, 0.3);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: 500;
+  font-size: 25px;
 }
-
 
 body {
   font-family: "Helvetica Neue",sans-serif;
@@ -31,7 +35,7 @@ header {
 
 .content {
   width: 94%;
-  margin: 4em auto;
+  margin: 3em auto;
   font-size: 20px;
   line-height: 30px;
   text-align: justify;
@@ -100,9 +104,11 @@ nav ul li a {
 #features {
   display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	flex-wrap: wrap;
+	justify-content: center;
 	align-items: center;
 	align-content: center;
+  height: 30vh;
 }
 
 .feature-box {
@@ -113,12 +119,12 @@ nav ul li a {
 }
 
 .icon {
-  color: #ff5a5f;
+  color: black;
   margin-bottom: 1rem;
 }
 
 .icon:hover {
-  color: black;
+  color: #ff5a5f;
 }
 
 #darkBackground {
@@ -129,7 +135,7 @@ nav ul li a {
 @media(max-width: 786px) {
 
   .logo {
-        position: fixed;
+        position:relative;
         top: 0;
         margin-top: 16px;
   }
