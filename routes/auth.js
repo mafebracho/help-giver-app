@@ -7,7 +7,7 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.get("/login", (req, res, next) => {
-  res.render("login");
+  res.render("login")
 });
 
 router.post("/signup", (req, res) => {
@@ -32,7 +32,7 @@ router.post("/signup", (req, res) => {
       User.create({ username: username, email: email, password: hash })
       .then(userFromDB => {
         console.log(userFromDB);
-        res.redirect("/");
+        res.redirect("/home");
       })
     }
   })

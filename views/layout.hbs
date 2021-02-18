@@ -5,14 +5,39 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>{{help-giver-app}}</title>
       <link rel="stylesheet" href="/stylesheets/style.css" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+      <title>{{help-giver-app}}</title>
     
    </head>
 
    <body>
+     <div class="wrapper">
+       <header>
+         <nav>
+           <div class="menu-icon">
+             <i class="fa fa-bars fa-2x"></i>
+            </div>
+             <div class="menu">
+               <ul>
+                <li><a href="/home"> Home </a></li>
+                <li><a href="/signup">Sign Up</a></li>
+                <li><a href="/login">Log In</a></li>
+                {{#if userFromDB.username }}
+                <li><a href="/profile/index"> Profile </a></li>
+                <li><a href="/logout"> Log Out</a></li>
+                {{/if}}
+                </ul>
+              </div>
+              <div class="logo">
+              <h1>LAND ME A HAND</h1>
+              </div>
+          </nav>
+        </header>
+      </div>
 
-             <div>
+             {{!-- <div>
         <nav>
             <ul>
               <li><a href="/home"> Home </a></li>
@@ -20,13 +45,13 @@
               <li><a href="/logout"> Log Out</a></li>
             </ul>
           </nav>
-        </div> 
+        </div>  --}}
 
 
-<main>
+
       {{{body}}}
 
-      </main>
+      
       
      <script src="/js/script.js"></script> 
    </body>

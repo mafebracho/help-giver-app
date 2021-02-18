@@ -1,31 +1,29 @@
 
-<div id="location">
-{{!-- <button class="sort" data-sort="location">Filter for Location</button> --}}
-<label for="location">Filter for Location</label> 
-<input  class="search" type="text">
 
-  {{!-- <select name="location">
-    {{#each requests}}
-    <option value="" id="">{{this.location}}</option>
-     {{/each}}
-  </select> --}}
+  <div class="cardBody">
+    <div class="container">
 
-
-<ul class="list">
-  <li>
 {{#each requests}}
+      <div class="card">
+        <div class="face face1">
+          <div class="content">
+            <h3>{{this.title}}</h3>
+          </div>
+        </div>
+        <div class="face face2">
+          <div class="content"> 
+            {{!-- <p>{{this.description}}</p> --}}
+            <p>{{this.location}}</p>
+            <p>{{this.date}}</p>
 
-  <p>{{this.title}}</p>
-  <img style="width: 200px;" src="{{this.imagePath}}"/>
-  <p class="location">{{this.location}}</p>
-  <p>{{this.date}}</p>
-
-  <button><a href="detailedView/{{this._id}}">See Details</a></button>
+            <a href="detailedView/{{this._id}}">See Details</a>
+          </div>
+        </div>
+      </div>
 
 {{/each}}
-</li>
-</ul>
-
-</div>
+    </div>
+  </div>
+    
 
 {{!-- here we can implement the map  --}}
