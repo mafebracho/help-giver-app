@@ -2,6 +2,10 @@
 
 {{#with request}}
 <form action="/requests/index" method="POST">
+
+<label for="title">Name:</label> 
+  <input id="title" type="text" name="title" value="{{this.title}}">
+
   <label for="description">For what you need help:</label> 
   <input id="title" type="text" name="description" value="{{this.description}}">
   

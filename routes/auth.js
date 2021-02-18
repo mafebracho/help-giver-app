@@ -41,7 +41,7 @@ router.post("/signup", (req, res) => {
   })
 })
 
-router.post("/login", (req, res) => {
+router.post('/home', /*"/login",*/ (req, res) => {
   // console.log(req.body.email);
   const { username, password } = req.body;
   User.findOne({ username: username })
@@ -52,7 +52,7 @@ router.post("/login", (req, res) => {
     if (bcrypt.compareSync(password, userFromDB.password)) {
       req.session.user = userFromDB;
       console.log(userFromDB);
-      res.render("home.hbs", { userFromDB });
+         res.render("home.hbs", { userFromDB });
     } else {
       res.render("login", { message: "Invalid credentials" });
     }

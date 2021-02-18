@@ -1,15 +1,19 @@
+<p><a href="/requests/index">See the requests that you have already posted</a></p>
+
 <h2>Add your request</h2>
 <form action="/requests/index" method="POST">
-  <label for="description">You need help for what:</label> 
-  <input id="title" type="text" name="description">
+
+  <label for="title">Name your request:</label> 
+  <input id="title" type="text" name="title" placeholder="Cat sitting help">
+
+  <label for="description">Describe it:</label> 
+  <input id="description" type="text" name="description">
   
   <label for="location">In which area:</label> 
   <input id="genre" type="text" name="location" placeholder="Berlin, Wedding">
   
-  <label for="date">Which Date:</label>
+  <label for="date">For which Date:</label>
   <input id="date" type="date" name="date" value="">
 
   <button type="submit">Confirm your request</button>
 </form>
-
-{{!-- We should add a "back" button so that if the user does not want to post, it can go back to home (where you choose to ask or give help) --}}
