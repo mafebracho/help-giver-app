@@ -16,17 +16,21 @@ const loginCheck = () => {
 }
 
 router.get ('/profile/index', loginCheck(), (req, res) => {
-   User.findOne()
- .then(user => {
-   console.log('This is the user', user)
-    res.render('profile/index', { user })
-  })
-  .catch(err => {
-    console.log(err)
-  })
+//   const user = req.session.user
+//    User.findOneAndUpdate(user)
+//  .then(user => {
+//    console.log('This is the user', user)
+//     res.render('profile/index', { user })
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+    const user = req.session.user
+      console.log('This is the user', user)
+    res.render('profile/index', {user})
 })
 
-router.get('/profile/:id/edit', loginCheck(), (req, res) => {
+router.get('/profile/:id/edit', /*loginCheck(),*/ (req, res) => {
   User.findById(req.params.id)
   .then(user => {
     console.log('the profile to edit', req.params.id)
@@ -55,7 +59,7 @@ router.post('/profile/:id/edit', loginCheck(), uploader.single('image'), (req, r
   })
   .then(user => {
     console.log('The edited user:', user)
-    res.redirect('/profile/index')
+    res.render('profile/index.hbs', {user })
   })
   .catch(err => {
     console.log(err)
