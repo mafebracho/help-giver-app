@@ -62,7 +62,7 @@ router.get('/requests/:id/edit', loginCheck(), (req, res) => {
 })
 
 // post changes in edit back to the seeker view with all requests
-router.post('/requests/index', loginCheck(), (req, res) => {
+router.post('/requests/:id/edit', loginCheck(), (req, res) => {
   const { description, location, date } = req.body
   const query = {_id: req.params.id}
   if (req.session.user.role !== 'admin') {
