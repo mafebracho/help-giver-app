@@ -36,7 +36,7 @@
 
 {{#with request}}
 <div class="signup-form">
-<form action="/requests/index" method="POST">
+<form action="/requests/{{ this._id }}/edit" method="POST">
 
 <label for="title">Name:</label> 
   <input id="title" type="text" name="title" value="{{this.title}}">
